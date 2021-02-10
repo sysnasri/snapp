@@ -89,41 +89,6 @@
             name: "{{ item }}"
             source: pull
        loop: "{{images_name}}"     
-     - name: prepare prometheus for docker
-       user: 
-         name: prometheus
-         shell: /bin/false
-         uid: "{{user.uid}}"
-     - name:
-       group:
-             name: prometheus
-             gid: "{{user.gid}}"
-
-     - file:
-         name: "{{item}}"
-         state: directory
-         owner: prometheus
-         group: prometheus
-         recurse: true
-       loop:
-         - /data/prometheus
-         - /etc/prometheus
-     - file: 
-         name: /etc/prometheus/prometheus.yml
-         state: touch
-         owner: prometheus
-         group: prometheus
-     - copy: 
-         src: prometheus.yml
-         dest: /etc/prometheus/prometheus.yml 
-     - copy:
-        src: ./docker-compose.yaml
-        dest: /tmp/docker-compose.yaml
-                
-     - name: Creating Services with docker compose 
-       docker_compose:
-         project_src: /tmp/
-         state: present 
           
   handlers:
    - name: docker_restart

@@ -19,14 +19,11 @@ proxy:
     username: ""
     password: ""
     server: "136.243.227.161"
-    port: "1370"
+    port: "1373"
 pip_modules:
         - pip
         - docker
         - docker-compose 
-user: 
-  uid: 1372
-  gid: 1372   
 
 nameserver:
   ns1: 8.8.8.8
