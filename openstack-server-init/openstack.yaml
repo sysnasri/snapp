@@ -18,6 +18,7 @@
         name: "{{   item.key          }}"
         image: "{{  item.value.image  }}"
         key_name: "{{ item.value.ssh_pkey }}"
+        boot_from_volume: yes
         timeout: 200
         flavor: "{{ item.value.flavor }}"
         network: "{{  item.value.network_id }}"
