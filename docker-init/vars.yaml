@@ -9,6 +9,8 @@ docker_packages:
      - python3-pip
      - virtualenv
      - python3-setuptools
+     - net-tools
+     - iproute2
 images_name: 
   - nginx
   - haproxy
@@ -16,7 +18,7 @@ images_name:
 proxy: 
     username: ""
     password: ""
-    server: ""
+    server: "136.243.227.161"
     port: "1370"
 pip_modules:
         - pip
