@@ -1,5 +1,5 @@
 os_auth:
-  os_admin_url: "http://10.10.10.180:5000/v3"
+  os_admin_url: "https://10.10.10.180:35357/v3"
   os_username:  admin
   os_password:  ieso6iebueXoh7me
   os_project: admin
