@@ -84,7 +84,7 @@
        docker_login:
           username: "{{docker.username}}"
           password: "{{docker.password}}"       
-     - name: Pull default Docker image
+     - name: Pulling default Docker image
        docker_image:
             name: "{{ item }}"
             source: pull
