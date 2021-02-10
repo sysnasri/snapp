@@ -1,6 +1,9 @@
 # Here we can install docker via ansible
 
-I'm going to update this repo soon
+First run the adduser.yaml playbook to add ansible user to the servers
+
+ansible-playbook -i openstac_inventory.py adduser.yaml
+
 
 I am going to use dynamic inventory in ansible in conjunction with openstack 
 

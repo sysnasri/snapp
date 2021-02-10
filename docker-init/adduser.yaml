@@ -13,13 +13,13 @@
 
 - name: add public key to nodes
   gather_facts: no
-  hosts: bond
+  hosts: snapp
   tasks: 
     - name: add public keys to node
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup( 'file','/home/ansible/.ssh/id_rsa.pub') }}"
+        key: "{{ lookup( 'file','/home/ubuntu/.ssh/id_rsa.pub') }}"
     - name: remove /run/nolging
       file:
         path: /run/nologin
