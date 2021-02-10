@@ -1,0 +1,34 @@
+Target_Host: snapp
+docker_packages:
+   ubuntu: 
+     - apt-transport-https
+     - ca-certificates
+     - curl
+     - gnupg-agent
+     - software-properties-common
+     - python3-pip
+     - virtualenv
+     - python3-setuptools
+images_name: 
+  - nginx
+  - haproxy
+  - golang  
+proxy: 
+    username: ""
+    password: ""
+    server: ""
+    port: "1370"
+pip_modules:
+        - pip
+        - docker
+        - docker-compose 
+user: 
+  uid: 1372
+  gid: 1372   
+
+nameserver:
+  ns1: 8.8.8.8
+  ns2: 4.2.2.4 
+docker:
+   username: ""
+   password: ""     

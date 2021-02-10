@@ -1,0 +1,136 @@
+---
+- name: Installing docker and a container.
+  hosts: "{{Target_Host}}"
+  vars_files: vars.yaml
+ #environment:
+   #http_proxy: "http://{{proxy.username}}:{{proxy.password}}@{{proxy.server}}:{{proxy.port}}"     
+   #https_proxy: "http://{{proxy.username}}:{{proxy.password}}@{{proxy.server}}:{{proxy.port}}"
+  tasks:
+
+     - name: Setting proper nameserver 
+       blockinfile:
+         block: |
+           nameserver "{{nameserver.ns1}}"
+           nameserver "{{nameserver.ns2}}"
+         insertafter: EOF
+         path: /etc/resolv.conf
+
+     - name: Installing necessary packages. 
+       package:
+         update_cache: true
+         name: "{{item}}"
+         state: present
+       loop: "{{docker_packages.ubuntu}}"
+       when: ansible_distribution == "Ubuntu"
+     - name: Add Docker GPG apt Key 
+       apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
+     - name: Set http proxy for APT 
+       template:
+          src: apt.proxy
+          dest: /etc/apt/apt.conf.d/proxy.conf
+
+     - name: Adding Docker Repository
+       apt_repository:
+              repo: deb https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+              state: present
+     - name: Updating apt and install docker-ce
+       package: 
+          update_cache: true 
+          name: docker-ce 
+          state: latest
+
+          ######## Set HTTP Proxy for Docker systemd service in vars.yaml ###########
+     - name: Setting docker systemd proxy
+       file:
+           name: /etc/systemd/system/docker.service.d 
+           state: directory
+     - template:
+             src: docker.proxy
+             dest: /etc/systemd/system/docker.service.d/http-proxy.conf  
+       notify:
+           - docker_restart
+           - daemon_reload
+     - name: Enabling docker service to run at boot 
+       service:
+         name: docker
+         enabled: true 
+         state: started     
+     - meta: flush_handlers
+     - name: Checking if docker-compose is already installed 
+       stat: 
+         path: /usr/local/bin/docker-compose
+       register: docpos
+
+     - name: Installing Docker Compose
+       shell: 
+         cmd: curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose; chmod +x  /usr/local/bin/docker-compose
+
+       when: docpos.stat.exists == false  
+
+
+     - name: Installing Docker Module for Python
+       pip:
+            name: "{{item}}" 
+            state: latest
+       loop: "{{pip_modules}}"
+       notify:
+        - docker_restart
+     - meta: flush_handlers
+
+ ################### Set your Docker hub credentials in vars.yaml #########################    
+     - name: login to dockerhub
+       docker_login:
+          username: "{{docker.username}}"
+          password: "{{docker.password}}"       
+     - name: Pull default Docker image
+       docker_image:
+            name: "{{ item }}"
+            source: pull
+       loop: "{{images_name}}"     
+     - name: prepare prometheus for docker
+       user: 
+         name: prometheus
+         shell: /bin/false
+         uid: "{{user.uid}}"
+     - name:
+       group:
+             name: prometheus
+             gid: "{{user.gid}}"
+
+     - file:
+         name: "{{item}}"
+         state: directory
+         owner: prometheus
+         group: prometheus
+         recurse: true
+       loop:
+         - /data/prometheus
+         - /etc/prometheus
+     - file: 
+         name: /etc/prometheus/prometheus.yml
+         state: touch
+         owner: prometheus
+         group: prometheus
+     - copy: 
+         src: prometheus.yml
+         dest: /etc/prometheus/prometheus.yml 
+     - copy:
+        src: ./docker-compose.yaml
+        dest: /tmp/docker-compose.yaml
+                
+     - name: Creating Services with docker compose 
+       docker_compose:
+         project_src: /tmp/
+         state: present 
+          
+  handlers:
+   - name: docker_restart
+     service:
+        name: docker
+        state: restarted
+   - name: daemon_reload
+     systemd:
+       daemon_reload: true    
+

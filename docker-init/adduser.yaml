@@ -1,0 +1,38 @@
+---
+- name: add ansible user to the nodes
+  hosts: snapp
+  gather_facts: no
+  vars_files:
+    - password.yaml
+  tasks:
+    - name: add user
+      user:
+        name: "{{ username }}"
+        shell: /bin/bash
+        password: "{{password}}"
+
+- name: add public key to nodes
+  gather_facts: no
+  hosts: bond
+  tasks: 
+    - name: add public keys to node
+      authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup( 'file','/home/ansible/.ssh/id_rsa.pub') }}"
+    - name: remove /run/nolging
+      file:
+        path: /run/nologin
+        state: absent
+    - name: install sudo
+      package:
+        name: 
+          - sudo
+          - net-tools
+          - iproute2
+        state: latest
+    - name: add ansible user     
+      copy:
+        content: " ansible ALL=(ALL) NOPASSWD: ALL"
+        dest: /etc/sudoers.d/ansible
+        

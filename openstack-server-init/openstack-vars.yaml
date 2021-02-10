@@ -9,6 +9,7 @@ servers_definitions:
     tags:
       os_name: ubutnu
       project_name: snapp
+      group: snapp
   snapp_vm2:
     image: dc017751-f7e0-4920-8804-4aa800d3e240
     ssh_pkey: ansible_ctl
@@ -19,6 +20,7 @@ servers_definitions:
     tags:
       os_name: ubutnu
       project_name: snapp
+      group: snapp
   snapp_vm3:
     image: dc017751-f7e0-4920-8804-4aa800d3e240
     ssh_pkey: ansible_ctl
@@ -29,3 +31,6 @@ servers_definitions:
     tags:
       os_name: ubutnu
       project_name: snapp
+      group: snapp
+
+
