@@ -1,0 +1,35 @@
+- name: initiate my lab to do the asnible snapp challenge 
+  hosts: localhost
+  vars_files: 
+      - openstack-vars.yaml
+      - os_auth.yaml
+  tasks: 
+    - name: create a desired server on top of openstack
+      os_server: 
+        state: present
+        auth:
+              auth_url: "{{ os_auth.os_admin_url  }}"
+              username: "{{ os_auth.os_username   }}"
+              password: "{{ os_auth.os_password   }}"
+              project_name: "{{ os_auth.os_project }}"
+              user_domain_name: "{{ os_auth.os_user_domain_name }}"
+              project_domain_name: "{{ os_auth.os_project_domain_name }}"
+        
+        name: "{{   item.key          }}"
+        image: "{{  item.value.image  }}"
+        key_name: "{{ item.value.ssh_pkey }}"
+        timeout: 200
+        flavor: "{{ item.value.flavor }}"
+        network: "{{  item.value.network_id }}"
+        region_name: "{{  item.value.region_name  }}"
+        security_groups: "{{  item.value.security_groups  }}"
+        meta: "{{ item.value.metadata }}"
+        volumes: "{{ item.value.volume  }}"
+      loop: "{{  servers_definitions  }}"  
+
+
+
+            
+
+
+  
