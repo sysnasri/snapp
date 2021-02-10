@@ -29,5 +29,5 @@ nameserver:
   ns1: 8.8.8.8
   ns2: 4.2.2.4 
 docker:
-   username: ""
-   password: ""     
+   username: "nasri"
+   password: "ali6056071ali"     
