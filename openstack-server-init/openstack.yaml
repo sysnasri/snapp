@@ -16,15 +16,15 @@
               project_domain_name: "{{ os_auth.os_project_domain_name }}"
         
         name: "{{   item.key          }}"
-        image: "{{  item.value.image  }}"
-        key_name: "{{ item.value.ssh_pkey }}"
+        image: "{{  item.image  }}"
+        key_name: "{{ item.ssh_pkey }}"
         timeout: 200
-        flavor: "{{ item.value.flavor }}"
-        network: "{{  item.value.network_id }}"
-        region_name: "{{  item.value.region_name  }}"
-        security_groups: "{{  item.value.security_groups  }}"
-        meta: "{{ item.value.metadata }}"
-        volumes: "{{ item.value.volume  }}"
+        flavor: "{{ item.flavor }}"
+        network: "{{  item.network_id }}"
+        region_name: "{{  item.region_name  }}"
+        security_groups: "{{  item.security_groups  }}"
+        meta: "{{ item.metadata }}"
+        volumes: "{{ item.volume  }}"
       loop: "{{  servers_definitions  }}"  
 
 
