@@ -1,2 +1,2 @@
-# snapp
-This is a public repo for snapp challenge 
+# This is a temporaly repo
+
