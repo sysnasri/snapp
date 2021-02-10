@@ -1,7 +1,7 @@
 servers_definitions:
   snapp_vm1:
     image: dc017751-f7e0-4920-8804-4aa800d3e240
-    ssh_pkey: ansible_ctl
+    ssh_pkey: juju-pki
     flavor: 3aa8c91c-2936-4ba1-9758-4271a0379ad4
     network_id: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
@@ -11,7 +11,7 @@ servers_definitions:
       project: snapp
   snapp_vm2:
     image: dc017751-f7e0-4920-8804-4aa800d3e240
-    ssh_pkey: ansible_ctl
+    ssh_pkey: juju-pki
     flavor: 3aa8c91c-2936-4ba1-9758-4271a0379ad4
     network_id: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
@@ -21,7 +21,7 @@ servers_definitions:
       project: snapp
   snapp_vm3:
     image: dc017751-f7e0-4920-8804-4aa800d3e240
-    ssh_pkey: ansible_ctl
+    ssh_pkey: juju-pki
     flavor: 3aa8c91c-2936-4ba1-9758-4271a0379ad4
     network_id: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
