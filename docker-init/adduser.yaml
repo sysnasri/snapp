@@ -7,6 +7,7 @@
       group: 
         name: wheel
         state: present
+# I have already added ssh key into the servers in openstack init stage.
 
     - name: add user 
       user:
