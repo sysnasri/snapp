@@ -11,5 +11,6 @@ COPY . .
 RUN go mod download
 RUN go mod verify
 RUN go build -o v1
+EXPOSE 8010
 
 
