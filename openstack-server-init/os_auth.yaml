@@ -4,4 +4,4 @@ os_auth:
   os_password:  "ieso6iebueXoh7me"
   os_project: "admin"
   os_user_domain_name: "admin_domain"
-  os_project_domain_name: "admin_domaina"
+  os_project_domain_name: "admin_domain"
