@@ -6,6 +6,7 @@ servers_definitions:
     network: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
     volume: d5a1ef00-83d1-45cb-a3f3-f3504b610342
+    region_name: RegionOne
     metadata:
       os_name: ubutnu
       project: snapp
@@ -16,6 +17,7 @@ servers_definitions:
     network: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
     volume: d5a1ef00-83d1-45cb-a3f3-f3504b610342
+    region_name: RegionOne
     metadata:
       os_name: ubutnu
       project: snapp
@@ -26,6 +28,7 @@ servers_definitions:
     network: 8fcdc95c-8825-49ac-a9b1-24dc4a70f738
     security_groups: 3625d6ba-2f34-4b18-8c7a-17c597030549
     volume: d5a1ef00-83d1-45cb-a3f3-f3504b610342
+    region_name: RegionOne
     metadata:
       os_name: ubutnu
       project: snapp
