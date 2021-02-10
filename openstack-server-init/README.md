@@ -7,7 +7,11 @@ You need to install openstacksdk
    
     pip install ansible openstacksdk
 
-For proof of concept vault password is: 6056071
+Run the playbook :
+
+    ansible-playbook openstack.yaml --ask-vault-pass
+
+    For proof of concept vault password is: 6056071
 
 
 

@@ -4,7 +4,7 @@
       - openstack-vars.yaml
       - os_auth.yaml
   tasks: 
-    - name: create a desired server on top of openstack
+    - name: create desired servers on top of openstack
       os_server: 
         state: present
         auth:
