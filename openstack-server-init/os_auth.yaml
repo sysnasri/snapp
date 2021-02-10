@@ -1,7 +1,7 @@
 os_auth:
   os_admin_url: "https://10.10.10.180:35357/v3"
-  os_username:  admin
-  os_password:  ieso6iebueXoh7me
-  os_project: admin
-  os_user_domain_name: admin_domain
-  os_project_domain_name: admin_domaina
+  os_username:  "admin"
+  os_password:  "ieso6iebueXoh7me"
+  os_project: "admin"
+  os_user_domain_name: "admin_domain"
+  os_project_domain_name: "admin_domaina"
