@@ -13,9 +13,9 @@
           dest: /tmp/docker-compose.yaml
       - copy:
           src: ./haproxy.cfg
-          dest: /tmp/haproxy.cfg
-          group: root
-          owner: root
+          dest: /haproxy/haproxy.cfg
+          group: haproxy
+          owner: haproxy
           mode: 644
 
       - name: Pull base Docker images
