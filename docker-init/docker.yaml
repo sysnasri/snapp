@@ -95,7 +95,8 @@
           owner: root
           group: root
           mode: 755
-          state: directory  
+          state: directory
+          recurse: yes  
           
   handlers:
    - name: docker_restart
