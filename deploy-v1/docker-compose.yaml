@@ -6,7 +6,6 @@ services:
       links:
          - snapp_v1
          - snapp_v2
-      user: haproxy:haproxy
       depends_on: 
         - "snapp_v1"
         - "snapp_v2"
