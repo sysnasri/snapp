@@ -8,8 +8,11 @@
           name: docker
           state: started
           enabled: yes
-      - name: clear unused cached as sometimes it may add some problem in deploying applications
-        
+     # - name: clear unused cached as sometimes it may add some problems in deploying applications
+     #   community.general.docker_prune:
+     #       builder_cache: yes
+     #       images: yes
+     #       networks: yes
       - copy:
           src: ./docker-compose.yaml
           dest: /tmp/docker-compose.yaml
