@@ -14,6 +14,7 @@ RUN go mod download
 RUN go mod verify
 RUN go build -o v1
 FROM ubuntu
+RUN apt update -y
 RUN apt install net-tools wget curl -y
 ENV APP_USER app
 ENV APP_HOME /go/src/v1
