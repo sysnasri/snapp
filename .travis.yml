@@ -5,4 +5,9 @@ before_install:
    - docker build -t nasri/snapp:v1 -f apps/v1.0.0/Dockerfile .
 script:
   - docker run nasri/snapp:v1 
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master  
     
