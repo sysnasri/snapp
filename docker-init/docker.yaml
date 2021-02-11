@@ -95,12 +95,14 @@
      - name: create group name
        group:
         name: haproxy
+        system: yes
 
      - name: creating haproxy user  
        user: 
         name: haproxy
         shell: /bin/false
         group: haproxy
+        system: yes
 
 
      - name: Create harpxoy directory for /haproxy/haproxy.conf
