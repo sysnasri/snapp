@@ -3,22 +3,21 @@ services:
     haproxy_proxy:
       container_name: haproxy_proxy
       image: haproxy
-      links: 
-         - "snapp_v1"
-         - "snapp_v2"
+      links:
+         - snapp_v1
+         - snapp_v2
+      user: root:root
       volumes:
-        - /snapp/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
-      ports: 
-        - 3000:3000   
+        - /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      ports:
+        - 3000:3000
     snapp_v1:
        container_name: snapp_app1
-       image: nasri/snapp:v1 
-       ports: 
+       image: nasri/snapp:v1
+       ports:
         - 3001:3001
     snapp_v2:
        container_name: snapp_app2
-       image: nasri/snapp:v1 
-       ports: 
+       image: nasri/snapp:v1
+       ports:
         - 3002:3001
-
-
