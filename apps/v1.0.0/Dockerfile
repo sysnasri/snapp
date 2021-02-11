@@ -15,7 +15,7 @@ RUN go mod verify
 RUN go build -o v1
 FROM ubuntu
 RUN apt update -y
-RUN apt install net-tools wget curl -y
+RUN apt install net-tools wget iputils-ping curl -y
 ENV APP_USER app
 ENV APP_HOME /go/src/v1
 RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
