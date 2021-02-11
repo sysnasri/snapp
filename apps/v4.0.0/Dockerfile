@@ -1,7 +1,8 @@
 # TODO v4.0.0
 FROM golang as builder 
-ENV HTTPS_PROXY=http://178.22.121.13:8080
-ENV HTTP_PROXY=http://178.22.121.13:8080
+# uncomment if you are located in Iran
+#ENV HTTPS_PROXY=http://178.22.121.13:8080
+#ENV HTTP_PROXY=http://178.22.121.13:8080
 ENV APP_USER app
 ENV APP_HOME /go/src/v4
 RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
