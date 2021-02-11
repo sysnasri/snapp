@@ -21,5 +21,5 @@ RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 COPY --chown=0:0 --from=builder $APP_HOME/v2 $APP_HOME
 USER $APP_USER
-EXPOSE 3000
+EXPOSE 3002
 CMD ["./v2"]
