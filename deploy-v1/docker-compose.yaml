@@ -8,7 +8,6 @@ services:
          - snapp_v2
       volumes:
         - /snapp/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
-
       ports: 
         - 3000:3000   
     snapp_v1:
