@@ -12,8 +12,8 @@ docker_packages:
      - net-tools
      - iproute2
 images_name: 
-  - haproxy
   - nasri/snapp:v1
+  - nasri/haproxy:v1
 proxy: 
     username: ""
     password: ""
