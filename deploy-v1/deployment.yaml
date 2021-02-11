@@ -13,7 +13,7 @@
           dest: /tmp/docker-compose.yaml
       - copy:
           src: ./haproxy.cfg
-          dest: /snapp/haproxy/haproxy.cfg
+          dest: /haproxy/haproxy.cfg
       - name: Pull base Docker images
         docker_image:
             name: "{{ item }}"
