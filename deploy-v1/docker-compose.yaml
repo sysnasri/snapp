@@ -20,6 +20,6 @@ services:
        container_name: snapp_app2
        image: nasri/snapp:v1 
        ports: 
-        - 3002:3002
+        - 3002:3001
 
 
