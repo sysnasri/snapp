@@ -11,7 +11,7 @@ services:
         - "snapp_v2"
       user: root:root  
       volumes:
-        - /haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+        - /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
       ports:
         - 3000:3000
     snapp_v1:

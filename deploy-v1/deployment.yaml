@@ -13,7 +13,7 @@
           dest: /tmp/docker-compose.yaml
       - copy:
           src: ./haproxy.cfg
-          dest: /haproxy/haproxy.cfg
+          dest: /tmp/haproxy.cfg
           group: root
           owner: root
           mode: 644
