@@ -9,6 +9,7 @@ before_install:
    - docker build -t nasri/snapp:v2 -f apps/v2.0.0/Dockerfile .
    - docker build -t nasri/snapp:v3 -f apps/v3.0.0/Dockerfile .
    - docker build -t nasri/snapp:v4 -f apps/v4.0.0/Dockerfile .
+   - docker build -t nasri/haproxy:v1 -f haproxy/Dockerfile .
 
 deploy:
   provider: script
