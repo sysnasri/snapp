@@ -9,6 +9,7 @@ services:
       depends_on: 
         - "snapp_v1"
         - "snapp_v2"
+      user: root:root  
       volumes:
         - /haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
       ports:
