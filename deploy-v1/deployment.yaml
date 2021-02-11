@@ -14,6 +14,8 @@
       - copy:
           src: ./haproxy.cfg
           dest: /haproxy/haproxy.cfg
+          group: haproxy
+          owner: haproxy
       - name: Pull base Docker images
         docker_image:
             name: "{{ item }}"
