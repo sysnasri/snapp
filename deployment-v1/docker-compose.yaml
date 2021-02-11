@@ -1,11 +1,17 @@
 version: '3'
 services:
-    nginx:
+    haproxy_proxy:
       container_name: haproxy_proxy
       image: nginx
-    haproxy: 
+      links: 
+         - haproxy_rev
+         - snapp
+
+    haproxy_rev: 
        container_name: haproxy_rev
        image: haproxy
     snapp:
        container_name: snapp_app
-       image: nasri/snapp:v1  
+       image: nasri/snapp:v1 
+
+
