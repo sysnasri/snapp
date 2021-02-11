@@ -103,7 +103,7 @@
         group: haproxy
 
 
-     - name: Create harpxoy directory for /snapp/haproxy/haproxy.conf
+     - name: Create harpxoy directory for /haproxy/haproxy.conf
        file:
           name:   /haproxy/
           owner: haproxy
