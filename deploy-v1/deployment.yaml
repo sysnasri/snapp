@@ -24,5 +24,6 @@
         docker_compose: 
           project_src: /tmp
           state: present
+          recreate: always
                
   
