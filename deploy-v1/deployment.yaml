@@ -8,6 +8,8 @@
           name: docker
           state: started
           enabled: yes
+      - name: clear unused cached as sometimes it may add some problem in deploying applications
+        
       - copy:
           src: ./docker-compose.yaml
           dest: /tmp/docker-compose.yaml

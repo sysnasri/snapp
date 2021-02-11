@@ -13,7 +13,7 @@ docker_packages:
      - iproute2
 images_name: 
   - haproxy
-  - sysnasri/snapp:v1
+  - nasri/snapp:v1
 proxy: 
     username: ""
     password: ""
