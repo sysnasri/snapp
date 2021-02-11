@@ -1,0 +1,28 @@
+- name: A play book to deploy two identical applications on the nodes.
+  hosts: "{{  Target_Host }}"
+  vars_files:
+    - vars.yaml
+  tasks:
+      - name: check if docker service is up and running
+        service:
+          name: docker
+          state: started
+          enabled: yes
+      - copy:
+          src: ./docker-compose.yaml
+          dest: /tmp/docker-compose.yaml
+      - copy:
+          src: ./haproxy.cfg
+          dest: /snapp/haproxy/haproxy.cfg
+      - name: Pull base Docker images
+        docker_image:
+            name: "{{ item }}"
+            source: pull
+        loop: "{{ images_name }}" 
+
+      - name: build docker containers from compose file.
+        docker_compose: 
+          project_src: /tmp
+          state: present
+               
+  

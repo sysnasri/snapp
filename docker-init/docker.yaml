@@ -88,7 +88,14 @@
        docker_image:
             name: "{{ item }}"
             source: pull
-       loop: "{{images_name}}"     
+       loop: "{{images_name}}"  
+     - name: Create harpxoy directory for /snapp/haproxy/haproxy.conf
+       file:
+          name:   /snapp/haproxy/
+          owner: root
+          group: root
+          mode: 644
+          state: directory  
           
   handlers:
    - name: docker_restart
