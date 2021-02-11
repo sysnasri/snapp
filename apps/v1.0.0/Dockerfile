@@ -1,6 +1,5 @@
 # TODO v1.0.0
-#FROM golang as builder 
-FROM golang
+FROM golang as builder 
 ENV APP_USER app
 ENV APP_HOME /go/src/v1
 RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
@@ -11,6 +10,13 @@ COPY . .
 RUN go mod download
 RUN go mod verify
 RUN go build -o v1
-EXPOSE 8010
-
-
+FROM ubuntu 
+ENV APP_USER app
+ENV APP_HOME /go/src/v1
+RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+COPY --chown=0:0 --from=builder $APP_HOME/v1 $APP_HOME
+USER $APP_USER
+EXPOSE 3000
+CMD ["./v1"]
