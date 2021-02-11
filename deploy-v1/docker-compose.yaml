@@ -4,8 +4,8 @@ services:
       container_name: haproxy_proxy
       image: haproxy
       links: 
-         - snapp_v1
-         - snapp_v2
+         - "snapp_v1"
+         - "snapp_v2"
       volumes:
         - /snapp/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
       ports: 

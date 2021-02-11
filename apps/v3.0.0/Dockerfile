@@ -14,12 +14,13 @@ RUN go mod download
 RUN go mod verify
 RUN go build -o v3
 FROM ubuntu 
+RUN apt install net-tools wget curl -y
 ENV APP_USER app
 ENV APP_HOME /go/src/v3
 RUN groupadd $APP_USER && useradd -m -g $APP_USER -l $APP_USER
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 COPY --chown=0:0 --from=builder $APP_HOME/v3 $APP_HOME
-USER $APP_USER
+#USER $APP_USER
 EXPOSE 3003
 CMD ["./v3"]
