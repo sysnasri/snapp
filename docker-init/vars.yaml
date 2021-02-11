@@ -12,14 +12,13 @@ docker_packages:
      - net-tools
      - iproute2
 images_name: 
-  - nginx
   - haproxy
-  - golang  
+  - sysnasri/snapp:v1
 proxy: 
     username: ""
     password: ""
-    server: "136.243.227.161"
-    port: "1373"
+    server: "178.22.121.13"
+    port: "8080"
 pip_modules:
         - pip
         - docker
