@@ -106,8 +106,8 @@
      - name: Create harpxoy directory for /haproxy/haproxy.conf
        file:
           name:   /haproxy/
-          owner: haproxy
-          group: haproxy
+          owner: root
+          group: root
           mode: 755
           state: directory
           recurse: yes  

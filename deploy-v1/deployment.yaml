@@ -14,8 +14,8 @@
       - copy:
           src: ./haproxy.cfg
           dest: /haproxy/haproxy.cfg
-          group: haproxy
-          owner: haproxy
+          group: root
+          owner: root
           mode: 644
 
       - name: Pull base Docker images
