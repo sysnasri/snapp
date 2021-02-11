@@ -5,6 +5,9 @@
  #environment:
    #http_proxy: "http://{{proxy.username}}:{{proxy.password}}@{{proxy.server}}:{{proxy.port}}"     
    #https_proxy: "http://{{proxy.username}}:{{proxy.password}}@{{proxy.server}}:{{proxy.port}}"
+  environment:
+   http_proxy: "http://178.22.121.13:8080" 
+   https_proxy: "http://178.22.121.13:8080"
   tasks:
 
      - name: Setting proper nameservers 
