@@ -88,12 +88,23 @@
        docker_image:
             name: "{{ item }}"
             source: pull
-       loop: "{{images_name}}"  
+       loop: "{{images_name}}"
+     - name: create group name
+       group:
+        name: haproxy
+
+     - name: creating haproxy user  
+       user: 
+        name: haproxy
+        shell: /bin/false
+        group: haproxy
+
+
      - name: Create harpxoy directory for /snapp/haproxy/haproxy.conf
        file:
           name:   /snapp/haproxy/
-          owner: root
-          group: root
+          owner: haproxy
+          group: haproxy
           mode: 755
           state: directory
           recurse: yes  

@@ -6,9 +6,10 @@ services:
       links:
          - snapp_v1
          - snapp_v2
-      user: root:root
+      user: 
+          haproxy:haproxy
       volumes:
-        - /tmp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+        - /snapp/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
       ports:
         - 3000:3000
     snapp_v1:
