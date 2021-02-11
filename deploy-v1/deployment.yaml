@@ -17,7 +17,7 @@
           src: ./docker-compose.yaml
           dest: /tmp/docker-compose.yaml
       - copy:
-          src: ./haproxy.cfg
+          src: ../haproxy/haproxy.cfg
           dest: /haproxy/haproxy.cfg
           group: haproxy
           owner: haproxy
