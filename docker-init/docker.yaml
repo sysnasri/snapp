@@ -105,7 +105,7 @@
 
      - name: Create harpxoy directory for /snapp/haproxy/haproxy.conf
        file:
-          name:   /snapp/haproxy/
+          name:   /haproxy/
           owner: haproxy
           group: haproxy
           mode: 755
