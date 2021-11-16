@@ -6,7 +6,7 @@ func main() {
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) {
-		c.Send("Welcome to my awesome app v1.0.0!")
+		c.Send("Hello World!")
 	})
 	app.Get("/healthz", func(c *fiber.Ctx) {
 		c.Status(200)
